@@ -15,6 +15,7 @@
     <nav id="nav" style="position: relative; top: 0; left: 0; bottom: auto; right: auto; width: 100%;">
       <div class="navbar">
         <div class="brand"><a href="/#welcome">Landon <span>Hotel</span></a></div>
+        <div class="brand" *ngIf="messages != null"><div *ngFor="let message of messages">{{message}} </div></div>
       </div><!-- navbar -->
     </nav>
   </div>

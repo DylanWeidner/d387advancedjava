@@ -21,6 +21,8 @@ export class AppComponent implements OnInit{
 
   private getUrl:string = this.baseURL + '/room/reservation/v1/';
   private postUrl:string = this.baseURL + '/room/reservation/v1';
+  messages : string[] = [];
+
   public submitted!:boolean;
   roomsearch! : FormGroup;
   rooms! : Room[];
@@ -34,6 +36,8 @@ export class AppComponent implements OnInit{
         checkout: new FormControl(' ')
       });
 
+      this.getMessages();
+
  //     this.rooms=ROOMS;
 
 
@@ -44,6 +48,7 @@ export class AppComponent implements OnInit{
       this.currentCheckInVal = x.checkin;
       this.currentCheckOutVal = x.checkout;
     });
+
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
@@ -82,6 +87,13 @@ export class AppComponent implements OnInit{
 
        return this.httpClient.get(this.baseURL + '/room/reservation/v1?checkin='+ this.currentCheckInVal + '&checkout='+this.currentCheckOutVal, {responseType: 'json'});
     }
+
+    getMessages(): void {
+
+      this.httpClient.get<string[]>(this.baseURL + '/messages', {responseType: 'json'}).subscribe(data =>
+        this.messages = data)
+   }
+
 
   }
 
