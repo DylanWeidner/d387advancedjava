@@ -31,7 +31,7 @@ public class MessageService {
         Properties properties = new Properties();
         try (InputStream stream = new ClassPathResource(resourcePath).getInputStream()) {
             properties.load(stream);
-            String message = properties.getProperty("hello") + " " + properties.getProperty("welcome");
+            String message = properties.getProperty("hello") + " " + properties.getProperty("welcome") + " " + Thread.currentThread().getName();
             messages.add(message);
             // the below print statements Show that 2 separate threads are running Asynchronously
             System.out.println(messages);

@@ -22,6 +22,7 @@ export class AppComponent implements OnInit{
   private getUrl:string = this.baseURL + '/room/reservation/v1/';
   private postUrl:string = this.baseURL + '/room/reservation/v1';
   messages : string[] = [];
+  datesAndTimes : string[] = [];
 
   public submitted!:boolean;
   roomsearch! : FormGroup;
@@ -37,6 +38,7 @@ export class AppComponent implements OnInit{
       });
 
       this.getMessages();
+      this.getDates();
 
  //     this.rooms=ROOMS;
 
@@ -93,6 +95,12 @@ export class AppComponent implements OnInit{
       this.httpClient.get<string[]>(this.baseURL + '/messages', {responseType: 'json'}).subscribe(data =>
         this.messages = data)
    }
+
+   getDates(): void {
+
+    this.httpClient.get<string[]>(this.baseURL + '/times', {responseType: 'json'}).subscribe(data =>
+      this.datesAndTimes = data)
+ }
 
 
   }

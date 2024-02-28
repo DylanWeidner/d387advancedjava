@@ -35,6 +35,11 @@
             <img src="assets/images/intro_attractions.jpg" alt="Intro Gallery Attractions Sample Pictures">
             <img class="hidesm" src="assets/images/intro_wedding.jpg" alt="Intro Gallery Dining Sample Pictures">
           </div>
+          <div *ngIf="datesAndTimes != null" style="font-size: 1.3em; color: yellow; border: 1px solid;">
+            Join us for an online live presentation held at the Landon Hotel on 
+            <strong>{{ datesAndTimes[0] }}</strong> at the following times:<br> 
+            <strong>{{datesAndTimes[1]}} | {{datesAndTimes[2]}} | {{datesAndTimes[3]}}</strong>
+          </div>
           <h1>Book a Room</h1>
           <form class="form-horizontal" [formGroup]="roomsearch"
           (ngSubmit)="onSubmit(roomsearch)">
